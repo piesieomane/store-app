@@ -41,6 +41,14 @@ $app->singleton(
     App\Exceptions\Handler::class
 );
 
+// $app->withMiddleware(function (Middleware $middleware) {
+//     $middleware
+//         ->web(append: [
+//             \Spatie\Multitenancy\Http\Middleware\NeedsTenant::class,
+//             \Spatie\Multitenancy\Http\Middleware\EnsureValidTenantSession::class,
+//         ]);
+// });
+
 /*
 |--------------------------------------------------------------------------
 | Return The Application
