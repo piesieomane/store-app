@@ -60,3 +60,11 @@ php artisan serve
 Now visit http://127.0.0.1:8000/admin/login to log into Filament.
 
 ````
+
+### Multi-Tenancy Explanation
+
+-   This project implements multi-tenancy without using a third-party package. Instead of Laravel Tenancy, it uses store-based data scoping:
+
+-   Each user can own only one store.
+-   All queries are automatically filtered by store_id, ensuring data isolation.
+-   Stores cannot access or modify products from other stores.
