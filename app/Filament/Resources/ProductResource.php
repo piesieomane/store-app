@@ -9,7 +9,6 @@ use Filament\Forms;
 use Filament\Forms\Components\Card;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Textarea;
-use Filament\Forms\Components\NumberInput;
 use Filament\Forms\Components\Hidden;
 use Filament\Resources\Form;
 use Filament\Resources\Resource;
@@ -18,6 +17,7 @@ use Filament\Tables;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Actions\EditAction;
 use Filament\Tables\Actions\DeleteAction;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
@@ -35,7 +35,7 @@ class ProductResource extends Resource
                     Hidden::make('store_id')->default(Auth::user()->store_id),
                     TextInput::make('name')->required(),
                     Textarea::make('description'),
-                    NumberInput::make('price')->required()->minValue(0),
+                    TextInput::make('price')->inputMode('decimal')->required()->minValue(0),
                 ]),
             ]);
     }
