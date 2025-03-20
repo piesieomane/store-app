@@ -50,7 +50,7 @@ class ProductResource extends Resource
             ])
             ->filters([
                 Tables\Filters\Filter::make('My Store')
-                    ->query(fn ($query) => $query->where('store_id', Auth::user()->store_id))
+                    ->query(fn ($query) => $query->where('store_id', auth()->user()->store_id))
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
@@ -59,6 +59,11 @@ class ProductResource extends Resource
             ->bulkActions([
                 Tables\Actions\DeleteBulkAction::make(),
             ]);
+    }
+
+    public static function getEloquentQuery(): Builder
+    {
+        return parent::getEloquentQuery()->where('store_id', Auth::user()->store_id);
     }
     
     public static function getRelations(): array

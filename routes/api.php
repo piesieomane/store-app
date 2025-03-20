@@ -20,13 +20,13 @@ use App\Http\Controllers\Api\AuthController;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
-
-Route::get('/status', function () {
-    return response()->json(['status' => true]);
+// Guest Routes
+Route::middleware(['guest'])->group(function () {
+    Route::post('/login', [AuthController::class, 'login']);
+    Route::get('/status', function () {
+        return response()->json(['status' => true]);
+    });
 });
-
-// Public Routes (Login)
-Route::post('/login', [AuthController::class, 'login']);
 
 // Protected Routes (Products & Logout)
 Route::middleware('auth:sanctum')->group(function () {
