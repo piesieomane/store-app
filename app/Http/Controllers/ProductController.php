@@ -13,8 +13,18 @@ class ProductController extends Controller
      */
     public function index(Request $request)
     {
-        $storeId = Auth::user()->store_id;
-        return response()->json(Product::where('store_id', $storeId)->get());
+        $user = Auth::user();
+
+        if (!$user) {
+            return response()->json(['error' => 'Unauthorized'], 401);
+        }
+
+        if (!$user->store_id) {
+            return response()->json(['error' => 'User does not belong to a store'], 400);
+        }
+
+        return response()->json( Product::where('store_id', $user->store_id)->get());
+
     }
 
     /**
