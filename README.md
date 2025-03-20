@@ -24,8 +24,8 @@ This is a **multi-tenant e-commerce API** built with **Laravel**, designed for s
 ### 1️⃣ **Clone the Repository**
 
 ````bash
-git clone https://github.com/your-repo-name.git
-cd your-repo-name
+git clone [https://github.com/your-repo-name.git](https://github.com/piesieomane/store-app.git)
+cd store-app
 
 ---
 
@@ -39,7 +39,7 @@ composer install
 ``` bash
 cp .env.example .env
 
--- Update the .env file with your database credentials.
+-- Update the .env file with your database credentials.example below
 ``` bash
 DB_CONNECTION=pgsql
 DB_HOST=localhost
